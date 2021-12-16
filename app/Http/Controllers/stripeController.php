@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Mail\invoice_mail;
 use App\Models\order;
 use Carbon\Carbon;
-use Cart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +28,7 @@ class stripeController extends Controller
     	}
     	else
     	{
-    		$total_amount = Cart::total();
+    		$total_amount = \Cart::session(auth()->id())->getTotal();
 
     	}
 
@@ -93,7 +92,7 @@ $invoice = order::find($order_id);
         Mail::to($request->email)->send(new invoice_mail($data));
 
             
-            $carts = Cart::content();
+            $carts = \Cart::session(auth()->id())->getContent();
 
  foreach($carts as $cart)
 
@@ -103,32 +102,36 @@ $invoice = order::find($order_id);
      
      'order_id' => $order_id,
      'product_id' => $cart->id,
-     'color' => $cart->options->color,
-     'size' => $cart->options->size,
-     'qty' => $cart->qty,
+     'color' => $cart->attributes->color,
+     'size' => $cart->attributes->size,
+     'qty' => $cart->quantity,
      'price' => $cart->price,
      'created_at' => Carbon::now()
 
 
  	]);
- }
 
-          if (Session::has('coupon'))
+     if (Session::has('coupon'.auth()->id()))
 
           {
-              Session::forget('coupon');
-              Cart::destroy();
+              Session::forget('coupon'.auth()->id());
+              \Cart::session(auth()->id())->remove($cart->id);
           }else{
-            Cart::destroy();
+            \Cart::session(auth()->id())->remove($cart->id);
 
           }
+ }
+
+// $product_id = \Cart::session(auth()->id())->getContent();
+
+          
          
          
          $notification = array('message' => 'Payment completed Successfully',
          
             'alert-type' => 'success'  );
          
-         return Redirect()->route('dashboard')->with($notification);
+         return Redirect()->to('/')->with($notification);
         
     }
 }

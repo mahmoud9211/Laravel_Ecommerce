@@ -146,19 +146,19 @@ Checkout
                    
                  @foreach($content as $items)
 
-					<li><strong>Image</strong> <img src="{{asset($items->options->image)}}" style="width:100px;height:100px;"></li>
+					<li><strong>Image</strong> <img src="{{asset($items->attributes->image)}}" style="width:100px;height:100px;"></li>
 
 
-					<li><strong>QTY: {{$items->qty}}</strong> ||<strong>Color: {{$items->options->color}}</strong> || <strong>Size: {{$items->options->size}}</strong> || <strong>Price: $ {{$items->price}}</strong> </li>
+					<li><strong>QTY: {{$items->qty}}</strong> ||<strong>Color: {{$items->attributes->color}}</strong> || <strong>Size: {{$items->attributes->size}}</strong> || <strong>Price: $ {{$items->price}}</strong> </li>
 					
 
 				@endforeach
                      
-                     @if(Session::has('coupon'))
-                   <li><strong>Coupon name : {{session()->get('coupon')['coupon_name']}}</strong></li>
-                <li><strong>Coupon discount :% {{session()->get('coupon')['coupon_discount']}}</strong></li>
-                <li><strong>Coupon discount amount :$ {{session()->get('coupon')['coupon_discount_amount']}}</strong></li>
-                <li><strong>GrandTotal :$ {{session()->get('coupon')['total_amount']}}</strong></li>
+                     @if(Session::has('coupon'.auth()->id()))
+                   <li><strong>Coupon name : {{session()->get('coupon'.auth()->id())['coupon_name']}}</strong></li>
+                <li><strong>Coupon discount :% {{session()->get('coupon'.auth()->id())['coupon_discount']}}</strong></li>
+                <li><strong>Coupon discount amount :$ {{session()->get('coupon'.auth()->id())['coupon_discount_amount']}}</strong></li>
+                <li><strong>GrandTotal :$ {{session()->get('coupon'.auth()->id())['total_amount']}}</strong></li>
 					<li><strong></strong></li>
 
 					@else

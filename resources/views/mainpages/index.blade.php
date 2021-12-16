@@ -337,6 +337,8 @@ $categories = DB::table('categories')->get();
                           
                         </div>
                         <!-- /.product-info -->
+                        <form method="get" action="{{route('wishlist.add')}}">
+                          @csrf
                         <div class="cart clearfix animate-effect">
                           <div class="action">
                             <ul class="list-unstyled">
@@ -348,14 +350,17 @@ $categories = DB::table('categories')->get();
                               </li>
 
                            
-                              <button type="button"  class="btn btn-primary icon" id="{{$pro->id}}" onclick="addToWishList(this.id)" title="Wishlist"> <i class="icon fa fa-heart"></i> </button> 
-                             
+                           
+                           <input type="hidden" name="id" value="{{$pro->id}}">
+                              <button type="submit"  class="btn btn-primary icon"  title="Wishlist"> <i class="icon fa fa-heart"></i> </button> 
+                              
 
                               <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
                             </ul>
                           </div>
                           <!-- /.action --> 
                         </div>
+                      </form>
                         <!-- /.cart --> 
                       </div>
                       <!-- /.product --> 

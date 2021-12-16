@@ -49,7 +49,7 @@ Cart
 
 <div class="col-md-4 col-sm-12 estimate-ship-tax">
 
-	@if(Session::has('coupon'))
+	@if(Session::has('coupon'.auth()->id()))
 
 	@else
 	<table class="table" id="couponField">

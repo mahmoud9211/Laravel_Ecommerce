@@ -288,7 +288,7 @@ route::get('/invoice/download{id}',[userController::class,'download_invoice'])->
 
 });
 
-route::post('/wishlist/add/{id}',[wishlistController::class,'Add_To_Wishlist']);
+route::get('/wishlist/add',[wishlistController::class,'Add_To_Wishlist'])->name('wishlist.add');
 
 route::get('wishlistCount',[wishlistController::class,'wishlistCount']);
 

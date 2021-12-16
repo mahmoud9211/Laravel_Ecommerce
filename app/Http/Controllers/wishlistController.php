@@ -13,11 +13,15 @@ class wishlistController extends Controller
 {
 
     use toastermsgs_trait;
-    public function Add_To_Wishlist (Request $request,$id)
+    public function Add_To_Wishlist (Request $request)
 
     {
 
+      $id = $request->id;
+
         $exists = wishlist::where('user_id',Auth::id())->where('product_id',$id)->first();
+
+        
 
 
 
@@ -35,14 +39,25 @@ class wishlistController extends Controller
    
           ]);
    
-          return response()->json(['success' => 'Product is added to your wishlist']);
-   
+        //  return response()->json(['success' => 'Product is added to your wishlist']);
+              $msg = ([
+                'message' => 'Product is added to your wishlist', 'alert-type' => 'success'
+              ]);
+
+              return redirect()->back()->with($msg);
          }
    
          else
    
          {
-                  return response()->json(['error' => 'Product is already in your wishlist']);
+
+          $msg = ([
+            'message' => 'Product is already in your wishlist', 'alert-type' => 'warning'
+          ]);
+
+          return redirect()->back()->with($msg);
+
+                  //return response()->json(['error' => 'Product is already in your wishlist']);
    
          }
    
@@ -53,9 +68,16 @@ class wishlistController extends Controller
         else
    
         {
-      return response()->json(['error' => 'Login first to add to your wishlist']);
-   
-   
+         // return response()->json(['error' => 'Login first to add to your wishlist']);
+
+      
+
+        return redirect()->route('login');
+
+       
+
+
+
         }
        
 

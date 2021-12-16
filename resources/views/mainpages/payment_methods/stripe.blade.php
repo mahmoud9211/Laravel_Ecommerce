@@ -53,16 +53,16 @@ Stripe
                    
 
                      
-                     @if(Session::has('coupon'))
+                     @if(Session::has('coupon'.auth()->id()))
                      <li><strong>Sub Total : $ {{$subtotal}}</strong></li>
                      <hr>
-                   <li><strong>Coupon name : {{session()->get('coupon')['coupon_name']}}</strong></li>
+                   <li><strong>Coupon name : {{session()->get('coupon'.auth()->id())['coupon_name']}}</strong></li>
                    <hr>
-                <li><strong>Coupon discount :% {{session()->get('coupon')['coupon_discount']}}</strong></li>
+                <li><strong>Coupon discount :% {{session()->get('coupon'.auth()->id())['coupon_discount']}}</strong></li>
                 <hr>
-                <li><strong>Coupon discount amount :$ {{session()->get('coupon')['coupon_discount_amount']}}</strong></li>
+                <li><strong>Coupon discount amount :$ {{session()->get('coupon'.auth()->id())['coupon_discount_amount']}}</strong></li>
                 <hr>
-                <li><strong>GrandTotal :$ {{session()->get('coupon')['total_amount']}}</strong></li>
+                <li><strong>GrandTotal :$ {{session()->get('coupon'.auth()->id())['total_amount']}}</strong></li>
 					<li><strong></strong></li>
 
 					@else

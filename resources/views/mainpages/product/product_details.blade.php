@@ -201,7 +201,7 @@
 
 <div class="col-sm-6">
 	<label for="color">Select Colour</label>
-	<select class="form-select" aria-label="Disabled select example" id="color">
+	<select class="form-select" aria-label="Disabled select example" name="color" id="color">
   <option selected disabled="">Select Colour</option>
   @foreach($color as $col)
   <option value="{{$col}}">{{$col}}</option>
@@ -217,7 +217,7 @@
 		@else
  	<label for="size">Select Size</label>
 
-<select class="form-select" aria-label="Disabled select example" id="size">
+<select class="form-select" aria-label="Disabled select example" name="size" id="size">
 
   <option selected disabled="">Select Size</option>
   @foreach($size as $sz)
