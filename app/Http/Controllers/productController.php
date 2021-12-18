@@ -287,6 +287,23 @@ class productController extends Controller
 
  }
 
+ public function product_by_subcat ($id,$name)
+ {
+    
+  $products = product::where('subcategory_id',$id)->latest()->get();
+    
+  return view ('mainpages.product.product_by_subcategories',compact('products'));
+
+ }
+
+ public function product_by_cat ($id,$name)
+ {
+  $products = product::where('category_id',$id)->latest()->get();
+    
+  return view ('mainpages.product.product_by_category',compact('products'));
+
+ }
+
 
 
 

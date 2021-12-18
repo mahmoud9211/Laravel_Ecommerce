@@ -7,7 +7,6 @@
           <ul class="list-unstyled">
             <li><a href="{{route('wishlist')}}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
             <li><a href="{{route('cart.page')}}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-            <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
             @guest
             <li><a href="{{route('login')}}"><i class="icon fa fa-lock"></i>Sign up / Sign in</a></li>
             @else 
@@ -30,13 +29,7 @@
         <div class="cnt-block">
           <ul class="list-unstyled list-inline">
             
-            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">English </span><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">English</a></li>
-                <li><a href="#">French</a></li>
-                <li><a href="#">German</a></li>
-              </ul>
-            </li>
+            
 
           </ul>
           <!-- /.list-unstyled --> 
@@ -79,7 +72,7 @@ $categories = DB::table('categories')->get();
                     <ul class="dropdown-menu" role="menu" >
                       @foreach($categories as $cat)
                       
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">{{$cat->name}}</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url('category/products'.'/'.$cat->id.'/'.$cat->name)}}">{{$cat->name}}</a></li>
                       @endforeach
                     </ul>
                     
@@ -115,9 +108,16 @@ $categories = DB::table('categories')->get();
                 <div class="clearfix cart-total">
                   <div class="pull-right"> <span class="text">Sub Total :</span><span class='price' id="total_price">$</span> </div>
                   <div class="clearfix"></div>
-                  <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
-                <!-- /.cart-total--> 
+
                 
+                   
+                 
+                  <a href="{{route('cart.page')}}" class="btn btn-upper btn-primary btn-block m-t-20" id="ctpage">Go to Cart</a>
+
+                 
+
+                  <a  href="{{url('/')}}" class="btn btn-upper btn-primary btn-block m-t-20" id="hmpage" >Keep Shopping</a>                <!-- /.cart-total--> 
+              
               </li>
             </ul>
             <!-- /.dropdown-menu--> 
@@ -167,14 +167,14 @@ $subcategories = DB::table('subcategories')->where('cat_id',$cat->id)->get();
                         <div class="row">
                           @foreach($subcategories as $subcat)
                           <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
-                            <h2 class="title">{{$subcat->name}}</h2>
+                           <a href="{{url('product/'.$subcat->id.'/'.$subcat->name)}}"> <h2 class="title">{{$subcat->name}}</h2> </a>
                             <ul class="links">
                               @php 
                               $products = DB::table('products')->where('subcategory_id',$subcat->id)->get();
                               @endphp
 
                               @foreach($products as $pro)
-                              <li><a href="#">{{$pro->name}}</a></li>
+                              <li><a href="{{url('/product/details').'/'.$pro->id.'/'.$pro->name}}">{{$pro->name}}</a></li>
                             @endforeach
                             </ul>
                           </div>

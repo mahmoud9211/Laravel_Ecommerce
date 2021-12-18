@@ -513,6 +513,19 @@ mini += `<div class="cart-item product-summary">
 
 $('#addmini').html(mini);
 
+if(data.count > 0)
+{
+  $('#ctpage').show();
+  $('#hmpage').hide();
+
+
+}else{
+ 
+  $('#ctpage').hide();
+  $('#hmpage').show();
+
+}
+
 
   }
 

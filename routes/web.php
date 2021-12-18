@@ -306,6 +306,7 @@ route::get('wishlist/remove/{id}',[wishlistController::class,'wishlistremove']);
 
 
 
+
 route::get('addToCart/{product}',[cartController::class,'Add_To_Cart']);
 
 route::post('add/to/cart/{product}',[cartController::class,'insertTocart']);
@@ -359,6 +360,15 @@ route::get('check',[cartController::class,'check']);
 route::get('product/details/{id}/{name}',[productController::class,'product_details']);
 
 route::get('product/view/{id}',[productController::class,'product_view']);
+
+//products by category
+
+route::get('category/products/{id}/{name}',[productController::class,'product_by_cat']);
+
+//products by subcategory
+
+route::get('product/{id}/{name}',[productController::class,'product_by_subcat']);
+
 
 //search
 

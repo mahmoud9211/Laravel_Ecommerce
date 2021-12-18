@@ -25,7 +25,7 @@ $subcategories = DB::table('subcategories')->where('cat_id',$cat->id)->get();
                      
                     @foreach($subcategories as $subcats)
                       <div class="col-sm-12 col-md-3">
-                     <a href="">  <h2 class="title">
+                        <a href="{{url('product/'.$subcats->id.'/'.$subcats->name)}}">  <h2 class="title">
                         {{$subcats->name}}
                          </h2> </a>
 
@@ -34,7 +34,7 @@ $products = DB::table('products')->where('subcategory_id',$subcats->id)->where('
 @endphp
                         @foreach($products as $pro)
                         <ul class="links list-unstyled">
-                          <li><a href="">
+                          <li><a href="{{url('/product/details').'/'.$pro->id.'/'.$pro->name}}">
                           {{$pro->name}}
                           </a></li>
                           
