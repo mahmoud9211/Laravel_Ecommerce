@@ -32,7 +32,8 @@
         <tr>
           <th>S.N</th>
           <th>Brand Name</th>
-          <th>Logo</th>
+          <th>Slider</th>
+          <th>Slider Status</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -44,13 +45,28 @@
         <tr>
           <td>{{$i++}}</td>
           <td>{{$b->name}}</td>
-          <td><img src="{{asset($b->logo)}}" style="width:100px;height:60px;"/></td>
+          <td><img src="{{asset($b->slider)}}" style="width:100px;height:60px;"/></td>
+          <td>
+          @if($b->slider_status == 1)
+          <span class="badge badge-success"> Active </span>  
+          @else 
+          <span class="badge badge-danger">In Active </span> 
+          @endif
+          </td>
           <td><a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
             data-toggle="modal" data-target="#edit{{$b->id}}" ><i class="fa fa-edit"></i></a>
   
             <a class=" btn btn-sm btn-danger" data-effect="effect-scale"
             href="{{route('admin.brand.delete',$b->id)}}" id="del"><i class=" fa fa-trash"></i></a>
-          
+
+            @if($b->slider_status == 1)
+                 
+            <a title="De Active" href="{{route('admin.brand.deactive',$b->id)}}" class="btn btn-sm btn-danger" ><i class="fa fa-arrow-down"></i></a>
+
+           @else
+
+           <a title="Activate" href="{{route('admin.brand.active',$b->id)}}" class="btn btn-sm btn-success" ><i class="fa fa-arrow-up"></i></a>
+          @endif
         </tr>
   
   
@@ -80,9 +96,9 @@
             <div class="col-md-12">
             <div class="form-group">
                 
-            <label for="exampleInputEmail1">Brand Logo</label>
+            <label for="exampleInputEmail1">Slider</label>
             <input type="file" accept="image/*" name ="logo" class="form-control">
-            <input type="hidden" class="form-control" name="old_logo"  value="{{$b->logo}}">
+            <input type="hidden" class="form-control" name="old_logo"  value="{{$b->slider}}">
 
             </div>
             </div>
@@ -161,7 +177,7 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Brand Logo</label>
+        <label for="exampleFormControlInput1">Slider</label>
         <input type="file" accept="image/*" name ="logo" class="form-control">
     
         @error('logo')

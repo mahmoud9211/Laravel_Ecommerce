@@ -55,28 +55,7 @@
 <!-- ============================================== NEWSLETTER: END ============================================== -->
 
 <!-- ============================================== Testimonials============================================== -->
-<div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-	<div id="advertisement" class="advertisement">
-        <div class="item">
-            <div class="avatar"><img src="assets/images/testimonials/member1.png" alt="Image"></div>
-		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">John Doe	<span>Abc Company</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
 
-         <div class="item">
-         	<div class="avatar"><img src="assets/images/testimonials/member3.png" alt="Image"></div>
-		<div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>    
-        </div><!-- /.item -->
-
-        <div class="item">
-            <div class="avatar"><img src="assets/images/testimonials/member2.png" alt="Image"></div>
-		<div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">Saraha Smith	<span>Datsun &amp; Co</span>	</div><!-- /.container-fluid -->
-        </div><!-- /.item -->
-
-    </div><!-- /.owl-carousel -->
-</div>
     
 <!-- ============================================== Testimonials: END ============================================== -->
 
@@ -92,8 +71,8 @@
     <div class="product-item-holder size-big single-product-gallery small-gallery">
 
         <div id="owl-single-product">
+
             <div class="single-product-gallery-item" id="slide{{$product->id}}">
-                <a data-lightbox="image-1" data-title="Gallery" href="{{asset($product->image_one)}}">
                     <img class="img-responsive" alt="" src="{{asset($product->image_one)}}" data-echo="{{asset($product->image_one)}}" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
@@ -101,30 +80,11 @@
 
         </div><!-- /.single-product-slider -->
 
-        <div id="owl-single-product">
-            <div class="single-product-gallery-item" id="slide{{$product->id}}">
-                <a data-lightbox="image-1" data-title="Gallery" href="{{asset($product->image_two)}}">
-                    <img class="img-responsive" alt="" src="{{asset($product->image_two)}}" data-echo="{{asset($product->image_two)}}" />
-                </a>
-            </div><!-- /.single-product-gallery-item -->
-
-
-        </div><!-- /.single-product-slider -->
+    
 
 
 
-        <div class="single-product-gallery-thumbs gallery-thumbs">
-
-            <div id="owl-single-product-thumbnails">
-
-              
-
-               
-            </div><!-- /#owl-single-product-thumbnails -->
-
-            
-
-        </div><!-- /.gallery-thumbs -->
+      
 
     </div><!-- /.single-product-gallery -->
 </div><!-- /.gallery-holder -->        			
@@ -151,7 +111,7 @@
 							</div><!-- /.stock-container -->
 
 							<div class="description-container m-t-20">
-								{{$product->details}}
+								{{strip_tags($product->details)}}
 							</div><!-- /.description-container -->
 
 							<div class="price-container info-container m-t-20">

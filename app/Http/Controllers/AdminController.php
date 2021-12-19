@@ -130,4 +130,66 @@ class AdminController extends Controller
             return redirect()->back();
          }
     }
+
+    public function profile ()
+
+    {
+        $admin = admin::where('id',Auth::guard('admin')->user()->id)->first();
+        return view ('admin.profile.profile',compact('admin'));
+    }
+
+    public function profile_edit ()
+    {
+        $admin = admin::where('id',Auth::guard('admin')->user()->id)->first();
+        return view ('admin.profile.profile_edit',compact('admin'));
+
+    }
+
+    public function profile_update (Request $request)
+    {
+
+        $photo = $request->file('photo');
+        if($photo)
+        {
+           // unlink($old_logo);
+            $name =hexdec(uniqid());
+            $image_ext = $photo->getClientOriginalExtension();
+            $image_name = $name.'.'.$image_ext;
+            $upload_path = 'public/media/brands/';
+            $image_url = $upload_path.$image_name;
+            $photo->move($upload_path, $image_name);
+            
+            admin::where('id',Auth::guard('admin')->user()->id)->update([
+
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'photo' => $image_url
+               
+    
+            ]);
+
+        }else{
+
+            admin::where('id',Auth::guard('admin')->user()->id)->update([
+
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                
+               
+    
+            ]);
+
+
+
+
+        }
+
+        return redirect()->route('admin.profile');
+
+       
+
+
+    }
 }

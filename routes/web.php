@@ -93,6 +93,10 @@ Route::prefix('admin')->middleware('Admin')->group(function(){
 
     Route::get('/brand/delete/{id}',[brandController::class,'brand_delete'])->name('admin.brand.delete');
 
+    Route::get('/brand/deactive/{id}',[brandController::class,'brand_slider_deactive'])->name('admin.brand.deactive');
+
+    Route::get('/brand/active/{id}',[brandController::class,'brand_slider_active'])->name('admin.brand.active');
+
     //sub category
 
     Route::get('/subcategory',[subcategoryController::class,'index'])->name('admin.subcategory');
@@ -200,6 +204,15 @@ Route::get('/user/delete{id}',[roleController::class,'user_delete'])->name('admi
 Route::get('/contact/messages',[contactController::class,'contact_messages'])->name('admin.contact.messages');
 
 Route::get('/message/view{id}',[contactController::class,'message_view'])->name('admin.message.view');
+
+Route::get('/profile',[AdminController::class,'profile'])->name('admin.profile');
+
+Route::get('/profile/edit',[AdminController::class,'profile_edit'])->name('admin.profile.edit');
+
+Route::post('/profile/update',[AdminController::class,'profile_update'])->name('admin.profile.update');
+
+
+
 
 
 
@@ -369,6 +382,12 @@ route::get('category/products/{id}/{name}',[productController::class,'product_by
 
 route::get('product/{id}/{name}',[productController::class,'product_by_subcat']);
 
+//products by brand
+
+route::get('brands/products/{id}/{name}',[productController::class,'product_by_brand']);
+
+
+
 
 //search
 
@@ -380,6 +399,11 @@ route::get('product/by/search',[productController::class,'product_By_search'])->
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
+
+
+//newsletter subscribe
+
+Route::post('/subscripe', [userController::class, 'newsletter_subscripe']);
 
 
 

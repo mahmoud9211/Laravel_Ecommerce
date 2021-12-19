@@ -8,6 +8,7 @@ use App\Http\Traits\toastermsgs_trait;
 use App\Models\contact;
 use App\Models\order;
 use App\Models\order_item;
+use App\Models\subscribtion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use PDF;
@@ -154,6 +155,40 @@ public function download_invoice ($id)
 
  $pdf = PDF::loadView('mainpages.user.invoice_download', compact('order','order_items'));
  return $pdf->download('invoice.pdf');
+
+
+
+}
+
+public function newsletter_subscripe (Request $request)
+{
+  $validation = $request->validate([
+
+    'email' => 'required|unique:subscribtions'
+
+  ]
+ 
+
+);
+
+
+
+subscribtion::insert([
+
+  'email' => $request->email
+
+]);
+
+$msg = ([
+
+  'message' => 'Thank you for subscription',
+  'alert-type' => 'success'
+
+]);
+
+return redirect()->back()->with($msg);
+
+
 
 
 

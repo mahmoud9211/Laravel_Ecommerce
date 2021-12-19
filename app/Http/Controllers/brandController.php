@@ -39,7 +39,8 @@ class brandController extends Controller
       brand::insert([
 
         'name' => $request->name,
-        'logo' => $image_url
+        'slider' => $image_url,
+        
 
       ]);
 
@@ -66,7 +67,7 @@ class brandController extends Controller
 
             brand::findOrFail($request->id)->update([
               'name' => $request->name,
-              'logo' => $image_url,
+              'slider' => $image_url,
               'updated_at' => Carbon::now()
             ]);
 
@@ -105,5 +106,24 @@ class brandController extends Controller
 
        return redirect()->back()->with($this->deletemsg());
 
+    }
+
+
+    public function brand_slider_deactive ($id)
+    {
+      brand::findOrFail($id)->update([
+         'slider_status' => 0
+      ]);
+
+      return redirect()->back();
+    }
+
+    public function brand_slider_active ($id)
+    {
+      brand::findOrFail($id)->update([
+         'slider_status' => 1
+      ]);
+
+      return redirect()->back();
     }
 }

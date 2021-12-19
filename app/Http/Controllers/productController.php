@@ -290,7 +290,7 @@ class productController extends Controller
  public function product_by_subcat ($id,$name)
  {
     
-  $products = product::where('subcategory_id',$id)->latest()->get();
+  $products = product::where('subcategory_id',$id)->where('status',1)->latest()->get();
     
   return view ('mainpages.product.product_by_subcategories',compact('products'));
 
@@ -298,9 +298,19 @@ class productController extends Controller
 
  public function product_by_cat ($id,$name)
  {
-  $products = product::where('category_id',$id)->latest()->get();
+  $products = product::where('category_id',$id)->where('status',1)->latest()->get();
     
   return view ('mainpages.product.product_by_category',compact('products'));
+
+ }
+
+ public function product_by_brand ($id,$name)
+ {
+  
+    $products = product::where('brand_id',$id)->where('status',1)->latest()->get();
+
+    return view ('mainpages.product.product_by_brand',compact('products'));
+
 
  }
 
