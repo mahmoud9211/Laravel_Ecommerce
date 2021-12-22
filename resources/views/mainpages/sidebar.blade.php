@@ -25,7 +25,7 @@ $subcategories = DB::table('subcategories')->where('cat_id',$cat->id)->get();
                      
                     @foreach($subcategories as $subcats)
                       <div class="col-sm-12 col-md-3">
-                        <a href="{{url('product/'.$subcats->id.'/'.$subcats->name)}}">  <h2 class="title">
+                        <a href="{{route('subcats',$subcats->id)}}">  <h2 class="title">
                         {{$subcats->name}}
                          </h2> </a>
 

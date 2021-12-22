@@ -287,7 +287,7 @@ class productController extends Controller
 
  }
 
- public function product_by_subcat ($id,$name)
+ public function product_by_subcat ($id)
  {
     
   $products = product::where('subcategory_id',$id)->where('status',1)->latest()->get();
@@ -296,7 +296,7 @@ class productController extends Controller
 
  }
 
- public function product_by_cat ($id,$name)
+ public function product_by_cat ($id)
  {
   $products = product::where('category_id',$id)->where('status',1)->latest()->get();
     
@@ -304,7 +304,7 @@ class productController extends Controller
 
  }
 
- public function product_by_brand ($id,$name)
+ public function product_by_brand ($id)
  {
   
     $products = product::where('brand_id',$id)->where('status',1)->latest()->get();

@@ -95,7 +95,7 @@
                   <div class="slider-header fadeInDown-1">Top Brands</div>
                   <div class="big-text fadeInDown-1"> {{$s->name}}  </div>
                   <div class="excerpt fadeInDown-2 hidden-xs"> <span></span> </div>
-                  <div class="button-holder fadeInDown-3"> <a href="{{url('brands/products'.'/'.$s->id.'/'.$s->name)}}" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a> </div>
+                  <div class="button-holder fadeInDown-3"> <a href="{{route('brands',$s->id)}}" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a> </div>
                 </div>
                 <!-- /.caption --> 
               </div>
@@ -206,8 +206,6 @@ $categories = DB::table('categories')->get();
                            <input type="hidden" name="id" value="{{$pro->id}}">
                               <button type="submit"  class="btn btn-primary icon"  title="Wishlist"> <i class="icon fa fa-heart"></i> </button> 
                               
-
-                              <li class="lnk"> <a data-toggle="tooltip" class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
                             </ul>
                           </div>
                           <!-- /.action --> 
@@ -364,7 +362,7 @@ $categories = DB::table('categories')->get();
               <div class="products">
                 <div class="product">
                   <div class="product-image">
-                    <div class="image"> <a href="detail.html"><img  src="{{asset($f->image_one)}}" alt=""></a> </div>
+                    <div class="image"> <a href="{{url('/product/details').'/'.$f->id.'/'.$f->name}}"><img  src="{{asset($f->image_one)}}" alt=""></a> </div>
                     <!-- /.image -->
                     
                     @if($f->discount_price == null)
@@ -388,7 +386,7 @@ $categories = DB::table('categories')->get();
                   <!-- /.product-image -->
                   
                   <div class="product-info text-left">
-                    <h3 class="name"><a href="detail.html"> {{$f->name}}
+                    <h3 class="name"><a href="{{url('/product/details').'/'.$f->id.'/'.$f->name}}"> {{$f->name}}
                     </a></h3>
                     <div class="rating rateit-small"></div>
                     <div class="description"></div>
@@ -404,18 +402,20 @@ $categories = DB::table('categories')->get();
                     
                   </div>
                   <!-- /.product-info -->
+                  <form method="get" action="{{route('wishlist.add')}}">
+                    @csrf
+
                   <div class="cart clearfix animate-effect">
                     <div class="action">
                       <ul class="list-unstyled">
                         <li class="add-cart-button btn-group">
                         
-                         <button data-toggle="modal" data-target="#exampleModal" id="" class="btn btn-primary icon"  type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+                          <button data-toggle="modal" data-target="#exampleModal" id="{{$f->id}}" class="btn btn-primary icon" onclick="productview(this.id)" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
                          
 
-                          <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                         </li>
-                        <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                        <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
+                        <input type="hidden" name="id" value="{{$f->id}}">
+                        <button type="submit"  class="btn btn-primary icon"  title="Wishlist"> <i class="icon fa fa-heart"></i> </button> 
                       </ul>
                     </div>
                     <!-- /.action --> 

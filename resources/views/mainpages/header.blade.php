@@ -72,7 +72,7 @@ $categories = DB::table('categories')->get();
                     <ul class="dropdown-menu" role="menu" >
                       @foreach($categories as $cat)
                       
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url('category/products'.'/'.$cat->id.'/'.$cat->name)}}">{{$cat->name}}</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('cats',$cat->id)}}">{{$cat->name}}</a></li>
                       @endforeach
                     </ul>
                     
@@ -167,7 +167,7 @@ $subcategories = DB::table('subcategories')->where('cat_id',$cat->id)->get();
                         <div class="row">
                           @foreach($subcategories as $subcat)
                           <div class="col-xs-12 col-sm-12 col-md-2 col-menu">
-                           <a href="{{url('product/'.$subcat->id.'/'.$subcat->name)}}"> <h2 class="title">{{$subcat->name}}</h2> </a>
+                           <a href="{{route('subcats',$subcat->id)}}"> <h2 class="title">{{$subcat->name}}</h2> </a>
                             <ul class="links">
                               @php 
                               $products = DB::table('products')->where('subcategory_id',$subcat->id)->get();

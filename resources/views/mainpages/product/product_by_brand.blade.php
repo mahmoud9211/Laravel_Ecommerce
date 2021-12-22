@@ -6,10 +6,7 @@
 <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
-      <ul class="list-inline list-unstyled">
-        <li><a href="#">Home</a></li>
-        <li class='active'>Handbags</li>
-      </ul>
+    
     </div>
     <!-- /.breadcrumb-inner --> 
   </div>
@@ -58,7 +55,7 @@
                      @foreach( $subcat as $sub)
                       <div class="accordion-inner">
                         <ul>
-                         	{{$sub->name}}
+                      <a href="{{route('subcats',$sub->id)}}">   	{{$sub->name}}
                       
                           </a></li>
                          
@@ -79,112 +76,12 @@
               </div>
               <!-- /.sidebar-widget-body --> 
             </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== SIDEBAR CATEGORY : END ============================================== --> 
+           
             
-            <!-- ============================================== PRICE SILDER============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
-              <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
-              </div>
-              <div class="sidebar-widget-body m-t-10">
-                <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$200.00</span> <span class="pull-right">$800.00</span> </span>
-                  <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
-                  <input type="text" class="price-slider" value="" >
-                </div>
-                <!-- /.price-range-holder --> 
-                <a href="#" class="lnk btn btn-primary">Show Now</a> </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== PRICE SILDER : END ============================================== --> 
-            <!-- ============================================== MANUFACTURES============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
-              <div class="widget-header">
-                <h4 class="widget-title">Manufactures</h4>
-              </div>
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li><a href="#">Forever 18</a></li>
-                  <li><a href="#">Nike</a></li>
-                  <li><a href="#">Dolce & Gabbana</a></li>
-                  <li><a href="#">Alluare</a></li>
-                  <li><a href="#">Chanel</a></li>
-                  <li><a href="#">Other Brand</a></li>
-                </ul>
-                <!--<a href="#" class="lnk btn btn-primary">Show Now</a>--> 
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== MANUFACTURES: END ============================================== --> 
-            <!-- ============================================== COLOR============================================== -->
-            <div class="sidebar-widget wow fadeInUp">
-              <div class="widget-header">
-                <h4 class="widget-title">Colors</h4>
-              </div>
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li><a href="#">Red</a></li>
-                  <li><a href="#">Blue</a></li>
-                  <li><a href="#">Yellow</a></li>
-                  <li><a href="#">Pink</a></li>
-                  <li><a href="#">Brown</a></li>
-                  <li><a href="#">Teal</a></li>
-                </ul>
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== COLOR: END ============================================== --> 
-            <!-- ============================================== COMPARE============================================== -->
-            <div class="sidebar-widget wow fadeInUp outer-top-vs">
-              <h3 class="section-title">Compare products</h3>
-              <div class="sidebar-widget-body">
-                <div class="compare-report">
-                  <p>You have no <span>item(s)</span> to compare</p>
-                </div>
-                <!-- /.compare-report --> 
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== COMPARE: END ============================================== --> 
-            <!-- ============================================== PRODUCT TAGS ============================================== -->
-            <!-- /.sidebar-widget --> 
-          <!----------- Testimonials------------->
-            <div class="sidebar-widget  wow fadeInUp outer-top-vs ">
-              <div id="advertisement" class="advertisement">
-                <div class="item">
-                  <div class="avatar"><img src="assets/images/testimonials/member1.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                  <div class="clients_author">John Doe <span>Abc Company</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="assets/images/testimonials/member3.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                  <div class="clients_author">Stephen Doe <span>Xperia Designs</span> </div>
-                </div>
-                <!-- /.item -->
-                
-                <div class="item">
-                  <div class="avatar"><img src="assets/images/testimonials/member2.png" alt="Image"></div>
-                  <div class="testimonials"><em>"</em> Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-                  <div class="clients_author">Saraha Smith <span>Datsun &amp; Co</span> </div>
-                  <!-- /.container-fluid --> 
-                </div>
-                <!-- /.item --> 
-                
-              </div>
-              <!-- /.owl-carousel --> 
-            </div>
+ 
             
             <!-- ============================================== Testimonials: END ============================================== -->
             
-            <div class="home-banner"> <img src="assets/images/banners/LHS-banner.jpg" alt="Image"> </div>
           </div>
           <!-- /.sidebar-filter --> 
         </div>
@@ -224,44 +121,12 @@
             <!-- /.col -->
             <div class="col col-sm-12 col-md-6">
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Sort by</span>
-                  <div class="fld inline">
-                    <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> Position <span class="caret"></span> </button>
-                      <ul role="menu" class="dropdown-menu">
-                        <li role="presentation"><a href="#">position</a></li>
-                        <li role="presentation"><a href="#">Price:Lowest first</a></li>
-                        <li role="presentation"><a href="#">Price:HIghest first</a></li>
-                        <li role="presentation"><a href="#">Product Name:A to Z</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- /.fld --> 
-                </div>
+         
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col -->
               <div class="col col-sm-3 col-md-6 no-padding">
-                <div class="lbl-cnt"> <span class="lbl">Show</span>
-                  <div class="fld inline">
-                    <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                      <button data-toggle="dropdown" type="button" class="btn dropdown-toggle"> 1 <span class="caret"></span> </button>
-                      <ul role="menu" class="dropdown-menu">
-                        <li role="presentation"><a href="#">1</a></li>
-                        <li role="presentation"><a href="#">2</a></li>
-                        <li role="presentation"><a href="#">3</a></li>
-                        <li role="presentation"><a href="#">4</a></li>
-                        <li role="presentation"><a href="#">5</a></li>
-                        <li role="presentation"><a href="#">6</a></li>
-                        <li role="presentation"><a href="#">7</a></li>
-                        <li role="presentation"><a href="#">8</a></li>
-                        <li role="presentation"><a href="#">9</a></li>
-                        <li role="presentation"><a href="#">10</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- /.fld --> 
-                </div>
+
                 <!-- /.lbl-cnt --> 
               </div>
               <!-- /.col --> 
@@ -333,22 +198,33 @@
                           
                         </div>
                         <!-- /.product-info -->
+                        <form method="get" action="{{route('wishlist.add')}}">
+                          @csrf
                         <div class="cart clearfix animate-effect">
                           <div class="action">
                             <ul class="list-unstyled">
                               <li class="add-cart-button btn-group">
 
-                               
-                         <button data-toggle="modal" data-target="#exampleModal" id="{{$val->id}}" class="btn btn-primary icon" onclick="productview(this.id)" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+                                <button data-toggle="modal" data-target="#exampleModal" id="{{$val->id}}" class="btn btn-primary icon" onclick="productview(this.id)" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
 
                                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+
+
+                                
+
+
                               </li>
-                              <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                              <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+
+                           
+                           
+                           <input type="hidden" name="id" value="{{$val->id}}">
+                              <button type="submit"  class="btn btn-primary icon"  title="Wishlist"> <i class="icon fa fa-heart"></i> </button> 
+                              
                             </ul>
                           </div>
                           <!-- /.action --> 
                         </div>
+                        </form>
                         <!-- /.cart --> 
                       </div>
                       <!-- /.product --> 
@@ -358,20 +234,8 @@
                   </div>
                   <!-- /.item -->
                   @endforeach
-                  
-                  
-                  
-                  
-                 
-                 
-                  
-                 
-                  
-                  
-                  
-                 
-                  
-                  
+
+
                   <!-- /.item -->
                   
                   
@@ -391,8 +255,91 @@
               <!-- /.category-product --> 
               
             </div>
-            <!-- /.tab-pane -->
+
             
+          <!-- Start modal   -->
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><strong id="pname"></strong></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closemodal">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 
+              <div class="row">
+               
+               <div class="col-md-4">
+          
+                <div class="card" style="width: 18rem;">
+            <img src="" id="pimg" class="card-img-top" alt="" style="width: 180px;height: 200px;">
+           
+          </div>
+                 
+          
+               </div>
+          
+                <div class="col-md-4">
+          
+                  <ul class="list-group">
+            <li class="list-group-item">Product Price : <span id="pprice"></span>
+              $ <del id="oldprice"> </del> <span id="dollar">$</span> </li>
+            <li class="list-group-item">Brand : <span id="brand"></span></li>
+            <li class="list-group-item">Category : <span id="cat"></span></li>
+            <li class="list-group-item">Product Code: <span id="code"></span></li>
+              <li class="list-group-item">Stock: <span id="stock"> </span> </li>
+          
+          </ul>
+          
+               </div>
+          
+               <div class="col-md-4">
+          
+                <div class="form-group">
+              <label for="color">Choose Color</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="color" id="color">
+               
+              </select>
+            </div>
+                 
+                  <div class="form-group" id="sizeD">
+              <label for="size">Choose Size</label>
+  
+              <select class="form-control" id="exampleFormControlSelect1" name="size" id="size">
+               
+  
+              </select>
+            </div>
+          
+            <div class="form-group">
+              <label for="qty">Quantity</label>
+              <input type="number" class="form-control" id="qty" value='1' min="1">
+            </div>
+          
+            <input type="hidden" id="product_id">
+          
+              <button type="submit" onclick="addToCart()" class="btn btn-primary mb-2">Add to cart</button>
+          
+          
+               </div>
+          
+          
+          </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
             <div class="tab-pane "  id="list-container">
               <div class="category-product">
 
@@ -424,17 +371,19 @@
                               
                              </div>
                             <!-- /.product-price -->
+                            <form method="get" action="{{route('wishlist.add')}}">
+                              @csrf
+
                             <div class="description m-t-10">{{strip_tags($result->details)}}</div>
                             <div class="cart clearfix animate-effect">
                               <div class="action">
                                 <ul class="list-unstyled">
                                   <li class="add-cart-button btn-group">
-                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                  </li>
-                                  <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                                </ul>
+                                    <button data-toggle="modal" data-target="#exampleModal" id="{{$result->id}}" class="btn btn-primary icon" onclick="productview(this.id)" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i> </button>
+
+  
+                                    <input type="hidden" name="id" value="{{$result->id}}">
+                                    <button type="submit"  class="btn btn-primary icon"  title="Wishlist"> <i class="icon fa fa-heart"></i> </button>                                 </ul>
                               </div>
                               <!-- /.action --> 
                             </div>
@@ -493,6 +442,10 @@
     </div>
     </div>
 </div>
+
+
+
+        
 
 
 

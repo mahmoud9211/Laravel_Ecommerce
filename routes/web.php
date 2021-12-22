@@ -386,15 +386,15 @@ route::get('product/view/{id}',[productController::class,'product_view']);
 
 //products by category
 
-route::get('category/products/{id}/{name}',[productController::class,'product_by_cat']);
+route::get('cats{id}',[productController::class,'product_by_cat'])->name('cats');
 
 //products by subcategory
 
-route::get('product/{id}/{name}',[productController::class,'product_by_subcat']);
+route::get('subcats{id}',[productController::class,'product_by_subcat'])->name('subcats');
 
 //products by brand
 
-route::get('brands/products/{id}/{name}',[productController::class,'product_by_brand']);
+route::get('brands{id}',[productController::class,'product_by_brand'])->name('brands');
 
 
 
