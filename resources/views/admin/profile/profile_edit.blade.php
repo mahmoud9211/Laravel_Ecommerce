@@ -1,5 +1,8 @@
 @extends('admin.master_admin')
 
+@section('title')
+{{'profile edit'}}
+@endsection
 
 @section('content')
 

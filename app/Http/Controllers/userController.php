@@ -62,7 +62,7 @@ class userController extends Controller
 
     public function orders ()
     {
-        $orders = order::where('user_id',Auth::id())->get();
+        $orders = order::where('user_id',Auth::id())->latest()->get();
 
         return view('mainpages.user.orders',compact('orders'));
     }
@@ -194,6 +194,63 @@ return redirect()->back()->with($msg);
 
 }
 
+
+public function update_profile ()
+{
+    return view ('mainpages.user.profile_upadte');
+   
+}
+
+public function update_profile_process (Request $request)
+{
+  $photo = $request->file('photo');
+   if($photo)
+   {
+
+     // unlink($old_logo);
+     $name =hexdec(uniqid());
+     $image_ext = $photo->getClientOriginalExtension();
+     $image_name = $name.'.'.$image_ext;
+     $upload_path = 'public/media/users/';
+     $image_url = $upload_path.$image_name;
+     $photo->move($upload_path, $image_name);
+
+     User::findOrFail(Auth::user()->id)->update([
+     
+      'name' => $request->name,
+      'email' => $request->email,
+      'phone' => $request->phone,
+      'photo' => $image_url
+     ]);
+
+
+
+   }else{
+
+    User::findOrFail(Auth::user()->id)->update([
+     
+      'name' => $request->name,
+      'email' => $request->email,
+      'phone' => $request->phone
+     
+     ]);
+
+     
+
+    
+
+
+
+   }
+
+   $msg = ([
+    'message' => 'Profile info updated successfully',
+    'alert-type' => 'success'
+  ]);
+
+   return redirect()->to('/dashboard')->with($msg);
+
+}
 
 
 

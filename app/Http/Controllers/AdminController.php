@@ -14,7 +14,13 @@ class AdminController extends Controller
 {
     public function create()
     {
-        return view ('admin.login');
+        if(!Auth::guard('admin')->check())
+        {
+            return view ('admin.login');
+        }
+
+        return redirect()->route('admin.dashboard');
+        
     }
 
     public function dashboard()
@@ -38,15 +44,26 @@ class AdminController extends Controller
 
         $admin = admin::where('email',$request->login)->orWhere('phone',$request->login)->first();
         
+   if(is_null($admin)){
 
-     if(Auth::guard('admin')->attempt(['phone' => $admin->phone, 'password' => $request->password ]) ||
-     Auth::guard('admin')->attempt(['email' => $admin->email, 'password' => $request->password ]) )
+    return redirect()->back()->with('error','Invalid email or password');
+   }else {
 
-        {
-           return redirect()->route('admin.dashboard');
-        }else{
-            return redirect()->back()->with('error','Invalid email or password');
-        }
+
+    if( 
+        Auth::guard('admin')->attempt(['email' => $admin->email, 'password' => $request->password ]) 
+        ||
+        Auth::guard('admin')->attempt(['phone' => $admin->phone, 'password' => $request->password ]))
+   
+           {
+              return redirect()->route('admin.dashboard');
+           }else{
+               return redirect()->back()->with('error','Invalid email or password');
+           }
+
+
+   }
+     
   
     }
 

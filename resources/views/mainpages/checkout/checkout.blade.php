@@ -195,9 +195,9 @@ Checkout
 
 	<div class="col-md-4">
 
-		<label>Paypal</label>
-		<input type="radio" name="payment_method" value = "paypal">
-		<img src="{{asset('frontend/assets/images/payments/1.png')}}" >
+		<label>Cash </label>
+		<input type="radio" name="payment_method" value = "cash">
+		<img src="{{asset('frontend/assets/images/payments/12.jpg')}}" >
     
     </div>
 

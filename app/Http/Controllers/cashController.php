@@ -12,12 +12,12 @@ use Illuminate\Http\Request;
 use App\Models\order_item;
 use Illuminate\Support\Facades\Mail;
 
-
-class stripeController extends Controller
+class cashController extends Controller
 {
-    public function stripe_payment (Request $request)
+    public function cash_payment (Request $request)
     {
 
+        
         if(Auth::check())
         {
         	if(Session::has('coupon'.auth()->id()))
@@ -32,17 +32,7 @@ class stripeController extends Controller
 
     	}
 
-        $token = $_POST['stripeToken'];
-
-    	\Stripe\Stripe::setApiKey('sk_test_51JcSoMAiUUkaE9KMb29YCt0C80clRsLLcb9l47Z5HZtKjFmHngDZsh1vc5mmXUSkJxnCceRoLso1mgfffOOVHohC00Hc3mbwDk');
-
-        $charge = \Stripe\Charge::create([
-            'amount' => $total_amount * 100,
-            'currency' => 'usd',
-            'description' => 'Mahmoud Website',
-            'source' => $token,
-            'metadata' => ['order_id' => uniqid()],
-          ]);
+        
 
           $order_id = order::insertGetId([
 
@@ -55,12 +45,12 @@ class stripeController extends Controller
             'phone' => $request->phone,
             'post_code' => $request->post_code,
             'notes' => $request->notes,
-            'payment_type' => 'stripe',
-            'payment_method' => 'stripe',
-            'transaction_id' => $charge->balance_transaction,
-            'currency' => $charge->currency,
+            'payment_type' => 'Cash On delivery',
+            'payment_method' => 'Cash On delivery',
+            'transaction_id' => mt_rand(),
+            'currency' => 'usd',
             'amount' => $total_amount,
-            'order_number' => $charge->metadata->order_id,
+            'order_number' => mt_rand(),
             'invoice_no' =>'EOS'.mt_rand(1000000000,9999999999),
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' =>  Carbon::now()->format('F'),
@@ -127,16 +117,12 @@ $invoice = order::find($order_id);
           
          
          
-         $notification = array('message' => 'Payment completed Successfully',
+         $notification = array('message' => 'Your Order is sent successfully',
          
             'alert-type' => 'success'  );
          
          return Redirect()->to('/')->with($notification);
         
     }
-}
-
-
-
-
+    }
 }

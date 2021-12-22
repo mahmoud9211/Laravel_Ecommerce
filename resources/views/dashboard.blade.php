@@ -11,22 +11,7 @@
 
 <div class="row">
 
-<div class="col-md-3">
-
-
-	
-
-<ul>
-
-<a href="{{route('dashboard')}}" class="btn btn-primary btn-block">Home</a>
-<a href="" class="btn btn-primary btn-block">Profile Update</a>
-<a href="{{route('user.change.password')}}" class="btn btn-primary btn-block">Change password</a>
-<a href="{{route('user.orders')}}" class="btn btn-primary btn-block">Orders</a>
-<a href="{{route('user.logout')}}" class="btn btn-danger btn-block">Logout</a>
-
-
-</ul>
-</div>
+@include('mainpages.user_sidemenue')
 
 <div class="col-md-8">
 

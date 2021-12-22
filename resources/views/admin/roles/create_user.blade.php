@@ -172,6 +172,14 @@
                     <input type="checkbox" id="checkbox_3" name="reports" value="1">
                     <label for="checkbox_3">reports</label>
                 </fieldset>
+                <fieldset>
+                    <input type="checkbox" id="checkbox_8" name="contact_messages" value="1">
+                    <label for="checkbox_8">contact_messages</label>
+                </fieldset>
+                <fieldset>
+                    <input type="checkbox" id="checkbox_9" name="status" value="1">
+                    <label for="checkbox_9">status</label>
+                </fieldset>
                 
     </div>
     </div>
@@ -190,6 +198,10 @@
                 <fieldset>
                     <input type="checkbox" id="checkbox_6" name="user_roles" value="1">
                     <label for="checkbox_6">user_roles</label>
+                </fieldset>
+                <fieldset>
+                    <input type="checkbox" id="checkbox_7" name="order_return_request" value="1">
+                    <label for="checkbox_7">order_return_request</label>
                 </fieldset>
                 
     </div>

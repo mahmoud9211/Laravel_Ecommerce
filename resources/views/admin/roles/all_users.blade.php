@@ -62,6 +62,14 @@ $i = 1;
                     @if($val->user_roles == 1)
                     <span class="badge badge-light"> user_roles </span>
                     @endif
+
+                    @if($val->order_return_request == 1)
+                    <span class="badge badge-light"> order_return_request </span>
+                    @endif
+
+                    @if($val->contact_messages == 1)
+                    <span class="badge badge-light"> contact_messages </span>
+                    @endif
                 </td>
 <td>  <a title="edit" href="{{route('admin.users.edit',$val->id)}}" class="btn btn-sm btn-info" > <i class="fa fa-edit" ></i> </a><a title="delete" href="{{route('admin.user.delete',$val->id)}}" class="btn btn-sm btn-danger" id="del" >
     <i class="fa fa-trash"></i></a>

@@ -21,6 +21,14 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('photo');
+            $table->integer('categories')->nullable();
+            $table->integer('products')->nullable();
+            $table->integer('reports')->nullable();
+            $table->integer('coupon')->nullable();
+            $table->integer('orders')->nullable();
+            $table->integer('user_roles')->nullable();
+            $table->integer('order_return_request')->nullable();
+            $table->integer('contact_messages')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

@@ -28,13 +28,15 @@ class roleController extends Controller
            'email' => $request->email,
            'phone' => $request->phone,
            'password' => Hash::make($request->password),
-           'status' => 2,
+           'status' => $request->status ?? 0,
            'categories' => $request->categories,
            'products' => $request->products,
            'reports' => $request->reports,
            'coupon' => $request->coupon,
            'orders' => $request->orders,
-           'user_roles' => $request->user_roles
+           'user_roles' => $request->user_roles,
+           'order_return_request' => $request->order_return_request,
+           'contact_messages' => $request->contact_messages
 
           ]);
 
@@ -49,7 +51,7 @@ class roleController extends Controller
     public function all_user ()
 
     {
-      $users = admin::where('status',2)->get();
+      $users = admin::where('status',0)->get();
       return view ('admin.roles.all_users',compact('users'));
 
     }
@@ -71,13 +73,15 @@ class roleController extends Controller
            'email' => $request->email,
            'phone' => $request->phone,
            'password' => Hash::make($request->password),
-           'status' => 2,
+           'status' => $request->status ?? 0,
            'categories' => $request->categories,
            'products' => $request->products,
            'reports' => $request->reports,
            'coupon' => $request->coupon,
            'orders' => $request->orders,
-           'user_roles' => $request->user_roles
+           'user_roles' => $request->user_roles,
+           'order_return_request' => $request->order_return_request,
+           'contact_messages' => $request->contact_messages
 
           ]);
 

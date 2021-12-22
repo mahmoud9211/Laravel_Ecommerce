@@ -71,10 +71,10 @@ class checkoutController extends Controller
     {
       return view ('mainpages.payment_methods.stripe',compact('data','subtotal'));
     }
-    else if ($request->payment_method == 'paypal')
+    else if ($request->payment_method == 'cash')
 
     {
-       return view ('mainpages.payment_methods.paypal',compact('data','subtotal'));
+       return view ('mainpages.payment_methods.cash',compact('data','subtotal'));
        
    
 

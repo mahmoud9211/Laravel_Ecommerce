@@ -10,6 +10,7 @@ use App\Http\Controllers\productController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\wishlistController;
 use App\Http\Controllers\cartController;
+use App\Http\Controllers\cashController;
 use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\GoogleController;
@@ -271,6 +272,12 @@ route::get('/change/password',[userController::class,'create'])->name('user.chan
 
 route::post('/update/password',[userController::class,'update_password'])->name('user.update.password');
 
+route::get('/profile/update',[userController::class,'update_profile'])->name('user.profile.update');
+
+route::post('/profile/update/process',[userController::class,'update_profile_process'])->name('user.profile.update.process');
+
+
+
 route::get('/orders',[userController::class,'orders'])->name('user.orders');
 
 route::get('/orders/view{id}',[userController::class,'order_view'])->name('user.order.view');
@@ -342,11 +349,14 @@ route::get('coupon/remove',[cartController::class,'coupon_remove']);
 
 
 //checkout
-route::get('checkout',[checkoutController::class,'checkout'])->name('checkout');
+route::get('checkout',[checkoutController::class,'checkout'])->middleware(['auth'])->name('checkout');
 
-route::post('checkout/proceed',[checkoutController::class,'checkout_proceed'])->name('checkout.proceed');
+route::post('checkout/proceed',[checkoutController::class,'checkout_proceed'])->middleware(['auth'])->name('checkout.proceed');
 
-route::post('stripe/payment',[stripeController::class,'stripe_payment'])->name('stripe.payment');
+route::post('stripe/payment',[stripeController::class,'stripe_payment'])->middleware(['auth'])->name('stripe.payment');
+
+route::post('cash/payment',[cashController::class,'cash_payment'])->middleware(['auth'])->name('cash.payment');
+
 
 
 
